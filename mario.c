@@ -31,6 +31,6 @@ int get_positive_int(string prompt)
     {
         n = get_int("%s", prompt);
     }
-    while (n < 1);
+    while (n < 1 || n > 8);
     return n;
 }
