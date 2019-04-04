@@ -26,9 +26,13 @@ int main(void)
         {
             printf("MASTERCARD\n");
         }
-        else
+        else if (company == 3)
         {
             printf("VISA\n");
+        }
+        else
+        {
+            printf("INVALID\n");
         }
     }
     else 
@@ -47,7 +51,7 @@ long get_card(string prompt)
     {
         n = get_long("%s", prompt); 
     }
-    while (n < 1000000000000 || n > 9999999999999999);
+    while (n < 1000000000 || n > 9999999999999999);
     return n;
 }
 
@@ -116,3 +120,5 @@ int get_company(long card, int len)
     
     return type;
 }
+
+//5673598276138003
