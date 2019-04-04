@@ -109,7 +109,7 @@ int get_company(long card, int len)
     {
         type = 2;
     }
-    else if (first_num == 4)
+    else if (first_num == 4 && (len == 13 || len == 16))
     {
         type = 3;
     }
@@ -121,4 +121,4 @@ int get_company(long card, int len)
     return type;
 }
 
-//5673598276138003
+//5673598276138003 4062901840
