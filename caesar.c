@@ -19,7 +19,7 @@ int main(int argc, string argv[])
             else
             {
                 valid = 0;
-                return 0;
+                return 1;
                 break;
             }
         }
@@ -27,7 +27,7 @@ int main(int argc, string argv[])
     else
     {
         printf("Usage: ./caesar key\n");  
-        return 0;
+        return 1;
     }
     
     //create key
