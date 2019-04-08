@@ -1,0 +1,14 @@
+check for valid key
+  if (valid)
+  {
+  save key as variable
+  ask for plaintext
+    iterate through each character
+      apply key to letters only
+        printf(each char)
+  }
+  
+  else
+  {
+    printf("Usage: ./caesar key")
+  }
