@@ -19,9 +19,15 @@ int main(int argc, string argv[])
             else
             {
                 valid = 0;
+                return 0;
                 break;
             }
         }
+    }
+    else
+    {
+        printf("Usage: ./caesar key\n");  
+        return 0;
     }
     
     //create key
@@ -39,7 +45,7 @@ int main(int argc, string argv[])
     }
     else
     {
-        printf("Usage: ./caesar key");
+        printf("Usage: ./caesar key\n");
     }
 
     //Iterate over char in plaintext and prints ciphertext
