@@ -41,10 +41,7 @@ int main(int argc, char *argv[])
     while (!feof(card))
     {
         //is it a start of new jpg?
-        if (buffer[0] == 0xff &&
-        buffer[1] == 0xd8 &&
-        buffer[2] == 0xff &&
-        (buffer[3] & 0xf0) == 0xe0)
+        if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0)
         {
             //check if already found
             if (img != NULL)
@@ -60,10 +57,7 @@ int main(int argc, char *argv[])
             int no_read = fread(buffer, 1, BLOCK, card);
 
             //writes following bytes until new jpeg
-            while (!(buffer[0] == 0xff &&
-            buffer[1] == 0xd8 &&
-            buffer[2] == 0xff &&
-            (buffer[3] & 0xf0) == 0xe0))
+            while (!(buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0))
             {
                 fwrite(buffer, 1, no_read, img);
                 no_read = fread(buffer, 1, BLOCK, card);
