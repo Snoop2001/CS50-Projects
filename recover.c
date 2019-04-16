@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define BLOCK 512
+
 int main(int argc, char *argv[])
 {
     if (argc != 2)
@@ -9,7 +11,6 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    //open file card
     // remember filenames
     char *cardName = argv[1];
 
@@ -22,7 +23,7 @@ int main(int argc, char *argv[])
     }
 
     //buffer space
-    unsigned char buffer[512];
+    unsigned char buffer[BLOCK];
 
     //store image title
     char title[8];
@@ -30,10 +31,11 @@ int main(int argc, char *argv[])
     //image index
     int index = 0;
 
+    //NULL image placeholder
     FILE *img = NULL;
 
-    //read 512 byte of data at a time
-    fread(buffer, 512, 1, card);
+    //read 512 bytes of data at a time
+    fread(buffer, BLOCK, 1, card);
 
     //repeat until end of file
     while (!feof(card))
@@ -54,8 +56,8 @@ int main(int argc, char *argv[])
             sprintf(title, "%03d.jpg", index);
             index++;
             img = fopen(title, "w");
-            fwrite(buffer, 512, 1, img);
-            int no_read = fread(buffer, 1, 512, card);
+            fwrite(buffer, BLOCK, 1, img);
+            int no_read = fread(buffer, 1, BLOCK, card);
 
             //writes following bytes until new jpeg
             while (!(buffer[0] == 0xff &&
@@ -64,12 +66,16 @@ int main(int argc, char *argv[])
             (buffer[3] & 0xf0) == 0xe0))
             {
                 fwrite(buffer, 1, no_read, img);
-                no_read = fread(buffer, 1, 512, card);
+                no_read = fread(buffer, 1, BLOCK, card);
+                if (no_read == 0)
+                {
+                    break;
+                }
             }
         }
         else
         {
-            fread(buffer, 512, 1, card);
+            fread(buffer, BLOCK, 1, card);
         }
     }
 
