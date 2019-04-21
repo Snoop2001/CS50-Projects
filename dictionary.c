@@ -79,7 +79,7 @@ bool load(const char *dictionary)
             new_node->next = NULL;
             int bucket = hash(word);
 
-            if(hashtable[bucket] == NULL)
+            if (hashtable[bucket] == NULL)
             {
                 hashtable[bucket] = new_node;
             }
@@ -130,12 +130,13 @@ bool check(const char *word)
         //loop until the end of linked list
         while (ptr != NULL)
         {
+
             //if the next node has the word, return true
             if (strcasecmp(ptr->word, word) == 0)
             {
                 return true;
 
-            //if it doesn't, point to the next node
+                //if it doesn't, point to the next node
             }
             else
             {
