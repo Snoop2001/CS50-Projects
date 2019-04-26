@@ -1,8 +1,14 @@
-#A collection of my CS50 Problem Sets
+## A collection of my CS50 Problem Sets
+
+#### Newest to Oldest
 
 Crack:
   - crack a user's password using "brute force"
   - use crypt() function 
+  
+Homepage
+  - Develop a website with 4 html documents
+  - Use basic html and CSS to style
   
 Speller
   - Load a dictionary of words into a hash table
@@ -10,14 +16,33 @@ Speller
   - Spellcheck each word against the dictionary
   - Output misspelled words
   
-Credit
-  - Use Luhn's algorithm to determine whether a credit card is valid
-  - Output the Company's name (e.g., VISA, Mastercard)
+Recover
+  - Recover jpeg files from a memory card
+  - Scan through the memory card until the program reaches the first 4 hexadecimals of a jpeg
+  - Write the jpeg to the system
+
+Vigenere
+  - create a more complex cipher
+  - shift letters in a message based on a string key given by the user
   
 Caesar
   - create a simple cipher
   - shift letters in a message based on a integer key given by the user
   
-Vigenere
-  - create a more complex cipher
-  - shift letters in a message based on a string key given by the user
+Credit
+  - Use Luhn's algorithm to determine whether a credit card is valid
+  - Output the Company's name (e.g., VISA, Mastercard)
+  
+Cash
+  - Obtain a cash value from the user
+  - Output the fewest amount of quarters, dimes, nickels, and pennies to obtain that value
+  
+Mario
+  - ASk the user for a pyramid size
+  - Output a pyramid of that size using hashtags (#)
+
+
+  
+
+  
+
