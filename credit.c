@@ -8,15 +8,20 @@ int get_company(long card, int len);
 
 int main(void)
 {
+    //obtain card to check
     long card = get_card("What is your credit card number?\n");
     long fake = card;
+    
+    //calculate length of card
     int length = 1;
     while(fake /= 10)
         length++;
 
+    //check if card is valid
     int valid = is_valid(card, length);  
     if (valid == 1)
     {
+        //print compant name
         int company = get_company(card, length);
         if (company == 1)
         {
@@ -35,12 +40,11 @@ int main(void)
             printf("INVALID\n");
         }
     }
+    //if not valid, print invalid
     else 
     {
         printf("INVALID\n");
     }
-    
-    // 378282246310005  5555555555554444  23243156789234
 }
 
 
@@ -60,6 +64,8 @@ int is_valid(long card, int len)
     int type;
     long digit_sum = 0;
     long other_sum = 0;
+    
+    //assess validity with Luhn's Algorithm
     for (int i = 1; i < len; i+=2)
     {
         long digit = floor(card/(pow(10, i))) - floor(card/(pow(10,(i+1))))*(pow(10,1));
@@ -101,14 +107,17 @@ int get_company(long card, int len)
     long first_Two = floor(card/(pow(10, (len-2))));
     long first_num = floor(card/(pow(10, (len-1))));
     
+    //digits for American Express
     if (first_Two == 34 || first_Two == 37)
     {
         type = 1; 
     }
+    //digits for Mastercard
     else if (first_Two == 51 || first_Two == 52 || first_Two == 53 || first_Two == 54 || first_Two == 55)
     {
         type = 2;
     }
+    //digits and length for VISA
     else if (first_num == 4 && (len == 13 || len == 16))
     {
         type = 3;
@@ -120,5 +129,3 @@ int get_company(long card, int len)
     
     return type;
 }
-
-//5673598276138003 4062901840
