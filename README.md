@@ -2,6 +2,11 @@
 
 #### Newest to Oldest
 
+Bleep:
+  - load a dictionary of banned words into a list
+  - accept a message from the user
+  - if any words from the message are included in the banned word list, censor with *
+
 Crack:
   - crack a user's password using "brute force"
   - use crypt() function 
