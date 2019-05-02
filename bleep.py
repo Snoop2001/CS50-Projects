@@ -1,7 +1,23 @@
 from cs50 import get_string
 from sys import argv, exit
+import re
 
 
+def censor(text, banned_words):
+    # for censored phrase
+    final = []
+    
+    # check if word needs to be censored
+    for word in text:
+        if (word.lower()).strip(",.!?") in banned_words:
+            censored = re.sub('[a-zA-Z]', '*', word)
+            final.append(censored)
+        else:
+            final.append(word)
+    
+    #return censored phrase
+    return ' '.join(final)
+    
 def main():
     # ensure correct usage
     if len(argv) != 2:
@@ -10,35 +26,17 @@ def main():
     
     # open dictionary of bad words
     name = argv[1] 
-    text = open(name, "r", encoding="latin_1")
-    if not text:
-        print("Could not open {}.".format(name))
-        unload()
-        exit(1)
-        
-    # store banned words in list
-    bannedList = []
-    for ban in text:
-        ban = ban.replace('\n', '')
-        bannedList.append(ban)
+    with open(name, 'r', encoding="UTF-8") as f:
+        lines = [line.rstrip() for line in f]
         
     # get user input to censor and split into words
-    toCensor = input("What message would you like to censor? ")
-    toCensor = toCensor.split()
+    to_censor = input("What message would you like to censor? ")
+    to_censor = to_censor.split()
     
-    # for censored phrase
-    final = []
+    #censor and obtain new phrase
+    censored = censor(to_censor, lines)
+    print(censored)
     
-    # check if word needs to be censored
-    for word in toCensor:
-        if word.lower() in bannedList:
-            censored = word.replace(word, "*"*len(word))
-            final.append(censored)
-        else:
-            final.append(word)
-    
-    print(' '.join(final))
-            
 
 if __name__ == "__main__":
     main()
