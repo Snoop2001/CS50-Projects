@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<div class="container">
+  <div class="row row-flex">
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="content colour-1">
+        <h3>Current Cash</h3>
+        <p style="font-size: large">{{ usd(user_cash) }}</p>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="content colour-2">
+        <h3>Grand Value</h3>
+        <p style="font-size: large">{{ usd(grand_value) }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<table class="table table-striped">
+  <thead style="background:#f5b82e">
+    <tr>
+      <th scope="col">Company</th>
+      <th scope="col">Symbol</th>
+      <th scope="col">Price</th>
+      <th scope="col">Shares</th>
+      <th scope="col">Total Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in range(len(portfolio)) %}
+    <tr>
+        <td>{{ lookup(portfolio[row]["symbol"])["name"] }}</td>
+        <td>{{ portfolio[row]["symbol"] }}</td>
+        <td>{{ usd(lookup(portfolio[row]["symbol"])["price"]) }}</td>
+        <td>{{ portfolio[row]["SUM(shares)"] }}</td>
+        <td>{{ usd(lookup(portfolio[row]["symbol"])["price"] * portfolio[row]["SUM(shares)"]) }}</td>
+    </tr>
+    {% endfor %}
+    <tr style="background:#2e944b">
+      <td colspan="5"></td>
+    </tr>
+  </tbody>
+</table>
+
+
+{% endblock %}

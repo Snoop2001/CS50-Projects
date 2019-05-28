@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+    <ul class="quotes">
+        <div style="color:#537fbe">
+            {{ quotes["name"] }}<br>
+        </div>
+        <div style="color:#ea433b">
+            {{ usd(quotes["price"]) }}<br>
+        </div>
+        <div style="color:#f5b82e">
+            {{ quotes["symbol"] }}
+        </div>
+    </ul>
+{% endblock %}
