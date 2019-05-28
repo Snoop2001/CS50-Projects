@@ -2,6 +2,13 @@
 
 #### Newest to Oldest
 
+Finance:
+  - a website to practice stock trading
+  - uses API to get real-time stock values
+  - uses both frontend and backend architecture 
+  - stores user account information in a SQL database
+  - stores user portfolios in seperate SQL database
+
 Bleep:
   - load a dictionary of banned words into a list
   - accept a message from the user
