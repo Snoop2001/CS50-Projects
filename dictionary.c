@@ -29,10 +29,13 @@ int num_words = 0;
 //help indicate loading
 bool loaded = false;
 
-// Hashes word to a number between 0 and 25, inclusive, based on its first letter
-unsigned int hash(const char *word)
+inline int hashValue(const char *word)
 {
-    return tolower(word[0]) - 'a';
+    unsigned int hash = 0;
+    for (int i=0, n=strlen(word); i<n; i++) {
+        hash = (hash << 2) ^ word[i];
+    }
+    return hash % N;
 }
 
 // Loads dictionary into memory, returning true if successful else false
